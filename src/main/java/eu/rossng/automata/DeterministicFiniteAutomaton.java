@@ -4,7 +4,9 @@ import com.sun.istack.internal.NotNull;
 import eu.rossng.automata.primitive.Alphabet;
 import eu.rossng.automata.primitive.DeterministicDelta;
 import eu.rossng.automata.primitive.State;
+import eu.rossng.automata.primitive.Symbol;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -19,7 +21,7 @@ public class DeterministicFiniteAutomaton {
     @NotNull
     private final DeterministicDelta delta;
     @NotNull
-    private Optional<State> currentState;
+    private State start;
 
     public DeterministicFiniteAutomaton(Set<State> states, Alphabet alphabet, DeterministicDelta delta, State start, Set<State> accept) {
         if (!states.contains(start)) {
@@ -30,8 +32,22 @@ public class DeterministicFiniteAutomaton {
             this.states = states;
             this.alphabet = alphabet;
             this.delta = delta;
-            this.currentState = Optional.of(start);
+            this.start = start;
             this.accept = accept;
         }
     }
+
+    public Boolean acceptsWord(List<Symbol> word) {
+        State currentState = this.start;
+        for (Symbol symbol : word) {
+            try {
+                currentState = this.delta.execute(currentState, symbol);
+            } catch (DeterministicDelta.CannotTransitionException e) {
+                System.err.println("Failed to execute transition from " + currentState.toString() + " by symbol " + symbol.toString());
+                e.printStackTrace();
+            }
+        }
+        return this.accept.contains(currentState);
+    }
+
 }

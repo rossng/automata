@@ -22,12 +22,18 @@ public class DeterministicDelta {
         return transitions;
     }
 
-    public Optional<State> execute(State currentState, Symbol symbol) {
+    public State execute(State currentState, Symbol symbol) throws CannotTransitionException {
         for (Transition transition : transitions) {
             if (transition.from().equals(currentState) && transition.on().equals(symbol)) {
-                return Optional.of(transition.to());
+                return transition.to();
             }
         }
-        return Optional.empty();
+        throw new CannotTransitionException("Could not transition from " + currentState.toString() + " by symbol " + symbol.toString());
+    }
+
+    public class CannotTransitionException extends Exception {
+        public CannotTransitionException(String message) {
+            super(message);
+        }
     }
 }

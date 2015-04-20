@@ -22,4 +22,9 @@ public class Symbol {
     public boolean equals(Object object) {
         return object instanceof Symbol && (this.toString().equals(((Symbol) object).toString()));
     }
+
+    @Override
+    public int hashCode() {
+        return this.representation.hashCode();
+    }
 }
