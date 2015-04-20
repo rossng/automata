@@ -1,13 +1,9 @@
 package eu.rossng.automata;
 
 import com.sun.istack.internal.NotNull;
-import eu.rossng.automata.primitive.Alphabet;
-import eu.rossng.automata.primitive.DeterministicDelta;
-import eu.rossng.automata.primitive.State;
-import eu.rossng.automata.primitive.Symbol;
+import eu.rossng.automata.primitive.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -28,7 +24,7 @@ public class DeterministicFiniteAutomaton {
             throw new IllegalArgumentException("The start state must be in the set of all states.");
         } else if (!states.containsAll(accept)) {
             throw new IllegalArgumentException("The set of accept states must be a subset of the set of all states.");
-        } else if (!delta.isCompleteFor(states, alphabet)) {
+        } else if (!delta.isValidFor(states, alphabet)) {
             throw new IllegalArgumentException("The set of transitions does not cover every case.");
         } else {
             this.states = states;
@@ -44,7 +40,7 @@ public class DeterministicFiniteAutomaton {
         for (Symbol symbol : word) {
             try {
                 currentState = this.delta.execute(currentState, symbol);
-            } catch (DeterministicDelta.CannotTransitionException e) {
+            } catch (CannotTransitionException e) {
                 System.err.println("Failed to execute transition from " + currentState.toString() + " by symbol " + symbol.toString());
                 e.printStackTrace();
             }
