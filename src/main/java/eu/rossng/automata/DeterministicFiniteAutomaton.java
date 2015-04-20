@@ -28,6 +28,8 @@ public class DeterministicFiniteAutomaton {
             throw new IllegalArgumentException("The start state must be in the set of all states.");
         } else if (!states.containsAll(accept)) {
             throw new IllegalArgumentException("The set of accept states must be a subset of the set of all states.");
+        } else if (!delta.isCompleteFor(states, alphabet)) {
+            throw new IllegalArgumentException("The set of transitions does not cover every case.");
         } else {
             this.states = states;
             this.alphabet = alphabet;

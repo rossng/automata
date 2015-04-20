@@ -31,6 +31,12 @@ public class DeterministicDelta {
         throw new CannotTransitionException("Could not transition from " + currentState.toString() + " by symbol " + symbol.toString());
     }
 
+    public Boolean isCompleteFor(Set<State> states, Alphabet alphabet) {
+        return states.stream().allMatch(state -> alphabet.symbols().stream()
+                        .allMatch(symbol -> this.transitions.stream().anyMatch(t -> t.from().equals(state) && t.on().equals(symbol)))
+        );
+    }
+
     public class CannotTransitionException extends Exception {
         public CannotTransitionException(String message) {
             super(message);

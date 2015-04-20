@@ -10,8 +10,13 @@ import java.util.Set;
  */
 public class Alphabet {
     @NotNull
-    HashSet<Symbol> symbols;
+    private final HashSet<Symbol> symbols;
+
     public Alphabet(@NotNull Set<Symbol> symbols) {
         this.symbols = new HashSet<>(symbols);
+    }
+
+    public Set<Symbol> symbols() {
+        return symbols;
     }
 }
