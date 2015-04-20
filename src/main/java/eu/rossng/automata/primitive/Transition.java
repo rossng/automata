@@ -18,15 +18,15 @@ public class Transition {
         this.on = on;
     }
 
-    public State getFrom() {
+    public State from() {
         return from;
     }
 
-    public State getTo() {
+    public State to() {
         return to;
     }
 
-    public Symbol getOn() {
+    public Symbol on() {
         return on;
     }
 }
