@@ -65,4 +65,18 @@ public class StateTest {
                 this.state3
         );
     }
+
+    @Test
+    public void testHashCode() throws Exception {
+        assertEquals(
+                "state1 hashCode should equal state2 hashCode",
+                this.state1.hashCode(),
+                this.state2.hashCode()
+        );
+        assertNotEquals(
+                "state1 hashCode should not equal state3 hashCode",
+                this.state1.hashCode(),
+                this.state3.hashCode()
+        );
+    }
 }

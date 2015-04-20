@@ -19,4 +19,14 @@ public class Alphabet {
     public Set<Symbol> symbols() {
         return symbols;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        return object instanceof Alphabet && (this.symbols().equals(((Alphabet) object).symbols()));
+    }
+
+    @Override
+    public int hashCode() {
+        return "Alphabet ".hashCode() + symbols.hashCode();
+    }
 }

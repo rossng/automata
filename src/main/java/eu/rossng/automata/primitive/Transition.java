@@ -29,4 +29,17 @@ public class Transition {
     public Symbol on() {
         return on;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        return object instanceof Transition
+                && (this.from().equals(((Transition) object).from()))
+                && (this.on().equals(((Transition) object).on()))
+                && (this.to().equals(((Transition) object).to()));
+    }
+
+    @Override
+    public int hashCode() {
+        return this.from().hashCode() + this.to().hashCode() + this.on().hashCode();
+    }
 }
