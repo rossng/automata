@@ -5,31 +5,28 @@ import javafx.util.Pair;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Defines a set of transitions.
  */
 public class DeterministicDelta {
     @NotNull
-    private final HashSet<Transition> transitions;
+    private final HashSet<DeterministicTransition> transitions;
 
-    public DeterministicDelta(@NotNull Set<Transition> transitions) {
+    public DeterministicDelta(@NotNull Set<DeterministicTransition> transitions) {
         this.transitions = new HashSet<>(transitions);
     }
 
-    public HashSet<Transition> getTransitions() {
+    public HashSet<DeterministicTransition> getTransitions() {
         return transitions;
     }
 
     public State execute(State currentState, Symbol symbol) throws CannotTransitionException {
         List<State> validTransitions = transitions.stream()
                 .filter(transition -> transition.from().equals(currentState) && transition.on().equals(symbol))
-                .map(Transition::to)
+                .map(DeterministicTransition::to)
                 .collect(Collectors.toList());
 
         if (validTransitions.size() == 1) {

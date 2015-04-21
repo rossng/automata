@@ -8,9 +8,9 @@ import static org.junit.Assert.*;
 /**
  * Test Transition class
  */
-public class TransitionTest {
+public class DeterministicTransitionTest {
 
-    Transition transition1, transition2, transition3, transition4, transition5;
+    DeterministicTransition transition1, transition2, transition3, transition4, transition5;
     State state1, state2, state3;
     Symbol a, A;
 
@@ -23,11 +23,11 @@ public class TransitionTest {
         this.state2 = new State("state2");
         this.state3 = new State("state3");
 
-        this.transition1 = new Transition(this.state1, this.state2, this.a);
-        this.transition2 = new Transition(this.state1, this.state2, this.a);
-        this.transition3 = new Transition(this.state1, this.state2, this.A);
-        this.transition4 = new Transition(this.state1, this.state3, this.a);
-        this.transition5 = new Transition(this.state3, this.state2, this.a);
+        this.transition1 = new DeterministicTransition(this.state1, this.state2, this.a);
+        this.transition2 = new DeterministicTransition(this.state1, this.state2, this.a);
+        this.transition3 = new DeterministicTransition(this.state1, this.state2, this.A);
+        this.transition4 = new DeterministicTransition(this.state1, this.state3, this.a);
+        this.transition5 = new DeterministicTransition(this.state3, this.state2, this.a);
     }
 
     @Test

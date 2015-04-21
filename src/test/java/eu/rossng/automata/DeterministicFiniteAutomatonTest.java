@@ -51,12 +51,12 @@ public class DeterministicFiniteAutomatonTest {
         this.finishStates1 = new HashSet<>(Arrays.asList(this.q0, this.q2));
 
         this.delta1 = new DeterministicDelta(new HashSet<>(Arrays.asList(
-                new Transition(this.q0, this.q1, this.a),
-                new Transition(this.q1, this.q2, this.a),
-                new Transition(this.q2, this.q0, this.a),
-                new Transition(this.q0, this.q2, this.b),
-                new Transition(this.q2, this.q1, this.b),
-                new Transition(this.q1, this.q0, this.b)
+                new DeterministicTransition(this.q0, this.q1, this.a),
+                new DeterministicTransition(this.q1, this.q2, this.a),
+                new DeterministicTransition(this.q2, this.q0, this.a),
+                new DeterministicTransition(this.q0, this.q2, this.b),
+                new DeterministicTransition(this.q2, this.q1, this.b),
+                new DeterministicTransition(this.q1, this.q0, this.b)
         )));
 
         this.dfa1 = new DeterministicFiniteAutomaton(states1, alphabet1, delta1, this.q0, this.finishStates1);

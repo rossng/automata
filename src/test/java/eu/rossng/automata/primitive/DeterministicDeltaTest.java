@@ -53,12 +53,12 @@ public class DeterministicDeltaTest {
         this.states1 = new HashSet<>(Arrays.asList(q0, q1, q2));
 
         delta1 = new DeterministicDelta(new HashSet<>(Arrays.asList(
-                new Transition(q0, q1, a),
-                new Transition(q1, q2, a),
-                new Transition(q2, q0, a),
-                new Transition(q0, q2, b),
-                new Transition(q2, q1, b),
-                new Transition(q1, q0, b)
+                new DeterministicTransition(q0, q1, a),
+                new DeterministicTransition(q1, q2, a),
+                new DeterministicTransition(q2, q0, a),
+                new DeterministicTransition(q0, q2, b),
+                new DeterministicTransition(q2, q1, b),
+                new DeterministicTransition(q1, q0, b)
         )));
 
         /*
@@ -80,11 +80,11 @@ public class DeterministicDeltaTest {
          */
 
         delta2 = new DeterministicDelta(new HashSet<>(Arrays.asList(
-                new Transition(q0, q1, a),
-                new Transition(q1, q2, a),
-                new Transition(q2, q0, a),
-                new Transition(q0, q2, b),
-                new Transition(q1, q0, b)
+                new DeterministicTransition(q0, q1, a),
+                new DeterministicTransition(q1, q2, a),
+                new DeterministicTransition(q2, q0, a),
+                new DeterministicTransition(q0, q2, b),
+                new DeterministicTransition(q1, q0, b)
         )));
 
         /*
@@ -108,13 +108,13 @@ public class DeterministicDeltaTest {
          */
 
         delta3 = new DeterministicDelta(new HashSet<>(Arrays.asList(
-                new Transition(q0, q1, a),
-                new Transition(q1, q2, a),
-                new Transition(q2, q0, a),
-                new Transition(q0, q2, b),
-                new Transition(q2, q1, b),
-                new Transition(q1, q0, b),
-                new Transition(q1, q1, b)
+                new DeterministicTransition(q0, q1, a),
+                new DeterministicTransition(q1, q2, a),
+                new DeterministicTransition(q2, q0, a),
+                new DeterministicTransition(q0, q2, b),
+                new DeterministicTransition(q2, q1, b),
+                new DeterministicTransition(q1, q0, b),
+                new DeterministicTransition(q1, q1, b)
         )));
     }
 
