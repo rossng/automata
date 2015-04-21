@@ -35,9 +35,12 @@ public class DeterministicFiniteAutomaton {
         }
     }
 
-    public Boolean acceptsWord(List<Symbol> word) {
+    public Boolean acceptsWord(List<Symbol> word) throws NotInAlphabetException {
         State currentState = this.start;
         for (Symbol symbol : word) {
+            if (!this.alphabet.symbols().contains(symbol)) {
+                throw new NotInAlphabetException("The symbol '" + symbol.toString() + "' is not in the alphabet of this automaton");
+            }
             try {
                 currentState = this.delta.execute(currentState, symbol);
             } catch (CannotTransitionException e) {

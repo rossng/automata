@@ -141,6 +141,7 @@ public class DeterministicDeltaTest {
                 this.q2
         );
     }
+
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
